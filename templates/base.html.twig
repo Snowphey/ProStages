@@ -6,7 +6,11 @@
         {% block stylesheets %}{% endblock %}        
     </head>
     <body>
-        {% block body %}{% endblock %}
+		{% block titre %}{% endblock %}
+		
+		{%block menu %}{% endblock %}
+	
+        {% block contenu %}{% endblock %}
 		{% block javascripts %}{% endblock %}
     </body>
 </html>
