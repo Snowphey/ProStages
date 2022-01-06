@@ -1,5 +1,42 @@
 {% extends 'base.html.twig' %}
 
 {% block contenu %}
-<h1>Cette page affichera le descriptif du stage ayant pour identifiant {{ idStage }}</h1>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h1><center>Stage #{{stage.getId()}}</center></h1> <HR>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card bg-default">
+				<h5 class="card-header">
+					{{stage.getTitre()}}
+				</h5>
+				<div class="card-body">
+					<p class="card-text">
+						<strong>Description des missions :</strong> <br/>
+						{{stage.getDescMissions()}}
+					</p>
+					<p class="card-text">	
+						<strong>E-mail de contact :</strong> <br/>
+						{{stage.getEmailContact()}}
+					</p>
+					<p class="card-text">
+						<strong>Entreprise :</strong> <br/>
+						<a href="{{ path('prostages_listeStages_entreprise', {idEntreprise:stage.getEntreprise().getId()}) }}">
+							{{stage.getEntreprise().getNom()}}
+						</a>
+					</p>
+				</div>
+				<div class="card-footer">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 {% endblock %}

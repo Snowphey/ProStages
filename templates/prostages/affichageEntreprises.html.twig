@@ -1,5 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block contenu %}
-<h1>Cette page affichera la liste des entreprises proposant un stage</h1>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h1><center>Liste des entreprises</center></h1> <HR>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<ul>
+			{% for entreprise in entreprises %}
+				<li>
+					<a href="{{ path('prostages_listeStages_entreprise', {idEntreprise:entreprise.getId()}) }}">
+						<h3>{{entreprise.getNom()}}</h3>
+					</a>
+				</li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
 {% endblock %}
