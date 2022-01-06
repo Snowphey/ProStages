@@ -15,30 +15,66 @@ class AppFixtures extends Fixture
 		// Création d'un générateur de données Faker
 		$faker = \Faker\Factory::create('fr_FR');
 		
-        $formation = new Formation();
-		$formation->setCode("1");
-		$formation->setNomLong("Diplôme Universitaire de Technologie en Informatique");
-		$formation->setNomCourt("DUT Informatique");
-		$manager->persist($formation);
+        $dutInfo = new Formation();
+		$dutInfo->setNomLong("Diplôme Universitaire de Technologie en Informatique");
+		$dutInfo->setNomCourt("DUT Informatique");
 		
-		$formation = new Formation();
-		$formation->setCode("2");
-		$formation->setNomLong("Diplôme Universitaire de Technologie en Gestion des Entreprises et des Administrations");
-		$formation->setNomCourt("DUT GEA");
-		$manager->persist($formation);
+		$dutGea = new Formation();
+		$dutGea->setNomLong("Diplôme Universitaire de Technologie en Gestion des Entreprises et des Administrations");
+		$dutGea->setNomCourt("DUT GEA");
 		
-		$formation = new Formation();
-		$formation->setCode("3");
-		$formation->setNomLong("Licence Professionnelle Programmation Avancée");
-		$formation->setNomCourt("LP Prog Avancée");
-		$manager->persist($formation);
+		$LPprog = new Formation();
+		$LPprog->setNomLong("Licence Professionnelle Programmation Avancée");
+		$LPprog->setNomCourt("LP Prog Avancée");
 		
-		$formation = new Formation();
-		$formation->setCode("4");
-		$formation->setNomLong("Licence Professionnelle Métiers du Numérique");
-		$formation->setNomCourt("LP Métiers du Numérique");
-		$manager->persist($formation);
-
+		$LPnum = new Formation();
+		$LPnum->setNomLong("Licence Professionnelle Métiers du Numérique");
+		$LPnum->setNomCourt("LP Métiers du Numérique");
+		
+		$tableauFormations = array($dutInfo, $dutGea, $LPprog, $LPnum);
+		
+		foreach($tableauFormations as $formation)
+		{
+			$manager->persist($formation);
+		}
+		
+		$nombreEntreprises = $faker->numberBetween(30,40);
+		
+		for ($i = 1 ; $i <= $nombreEntreprises ; $i++)
+		{
+			$entreprise = new Entreprise();
+			$entreprise->setNom($faker->company());
+			$entreprise->setActivite($faker->realText($maxNbChars = 50, $indexSize = 2));
+			$entreprise->setAdresse($faker->address());
+			$entreprise->setURLsite($faker->url());
+			
+			$nombreStages = $faker->numberBetween(1,3);
+			
+			for ($j = 1 ; $j <= $nombreStages ; $j++)
+			{
+				$stage = new Stage();
+				$stage->setTitre($faker->jobTitle());
+				$stage->setDescMissions($faker->realText($maxNbChars = 255, $indexSize = 2));
+				$stage->setEmailContact($faker->email());
+				$stage->setEntreprise($entreprise);
+				
+				$nombreFormations = $faker->numberBetween(1,3);
+				
+				for ($k = 1 ; $k <= $nombreFormations ; $k++)
+				{
+					$indiceFormation = $faker->unique()->numberBetween(0,3);	// On prend un indice unique parmi ceux 
+																				// du tableau de formations (avec 4 entrées)
+					$stage->addFormation($tableauFormations[$indiceFormation]);
+				}
+				
+				$faker->unique($reset = true);
+				
+				$manager->persist($stage);
+			}
+			
+			$manager->persist($entreprise);
+		}
+		
         $manager->flush();
     }
 }

@@ -20,11 +20,6 @@ class Formation
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $code;
-
-    /**
      * @ORM\Column(type="string", length=100)
      */
     private $nomLong;

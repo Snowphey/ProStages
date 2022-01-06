@@ -10,7 +10,7 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<table class="table table-bordered">
+			<table class="table table-bordered border-dark border border-2">
 				<thead>
 					<tr>
 						<th>
@@ -31,74 +31,27 @@
 					</tr>
 				</thead>
 				<tbody>
+					{% for stage in stages %}
 					<tr>
 						<td>
-							1
+							{{stage.getId()}}
 						</td>
 						<td>
-							WebDesigner
+							{{stage.getTitre()}}
 						</td>
 						<td>
-							Panda One
+							{{stage.getEntreprise().getNom()}}
 						</td>
 						<td>
-							Production de sites web
+							{{stage.getEntreprise().getActivite()}}
 						</td>
 						<td>
-							223 avenue de l'Adour, 64600 Anglet
+							{{stage.getEntreprise().getAdresse()}}
 						</td>
 					</tr>
-					<tr>
-						<td>
-							2
-						</td>
-						<td>
-							Pentester
-						</td>
-						<td>
-							Orange
-						</td>
-						<td>
-							Correction de failles de sécurité web
-						</td>
-						<td>
-							46 avenue du Chut, 33700 Mérignac
-						</td>
-					</tr>
-					<tr>
-						<td>
-							3
-						</td>
-						<td>
-							Programmeur Android
-						</td>
-						<td>
-							RedMoot
-						</td>
-						<td>
-							Production d'applications mobiles natives Android
-						</td>
-						<td>
-							16 rue de la pipe, 64100 Bayonne
-						</td>
-					</tr>
-					<tr>
-						<td>
-							4
-						</td>
-						<td>
-							StormShield
-						</td>
-						<td>
-							Orange
-						</td>
-						<td>
-							Protection réseau
-						</td>
-						<td>
-							46 avenue du chut, 33700 Mérignac
-						</td>
-					</tr>
+					{% else %}
+						<p>Aucun stage disponible.</p>
+					{% endfor %}
 				</tbody>
 			</table>
 		</div>

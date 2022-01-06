@@ -20,11 +20,6 @@ class Entreprise
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $code;
-
-    /**
      * @ORM\Column(type="string", length=50)
      */
     private $nom;
