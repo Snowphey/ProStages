@@ -30,7 +30,7 @@ class Formation
     private $nomLong;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=40)
      */
     private $nomCourt;
 
