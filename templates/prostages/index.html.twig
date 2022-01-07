@@ -28,6 +28,9 @@
 						<th>
 							Adresse de l'entreprise
 						</th>
+						<th>
+							URL du site de l'entreprise
+						</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -50,7 +53,9 @@
 							<td>
 								{{stage.getEntreprise().getAdresse()}}
 							</td>
-						
+							<td>
+								{{stage.getEntreprise().getURLsite()}}
+							</td>
 					</tr>
 					{% else %}
 						<p>Aucun stage disponible.</p>
