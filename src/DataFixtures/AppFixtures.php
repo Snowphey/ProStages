@@ -15,6 +15,7 @@ class AppFixtures extends Fixture
 		// Création d'un générateur de données Faker
 		$faker = \Faker\Factory::create('fr_FR');
 		
+		// Création de 4 formations à la main
         $dutInfo = new Formation();
 		$dutInfo->setNomLong("Diplôme Universitaire de Technologie en Informatique");
 		$dutInfo->setNomCourt("DUT Informatique");
@@ -35,9 +36,11 @@ class AppFixtures extends Fixture
 		
 		foreach($tableauFormations as $formation)
 		{
+			// On persiste chaque formation créée
 			$manager->persist($formation);
 		}
 		
+		// On génère entre 30 et 40 entreprises
 		$nombreEntreprises = $faker->numberBetween(30,40);
 		
 		for ($i = 1 ; $i <= $nombreEntreprises ; $i++)
@@ -48,6 +51,7 @@ class AppFixtures extends Fixture
 			$entreprise->setAdresse($faker->address());
 			$entreprise->setURLsite($faker->domainName());
 			
+			// Chaque entreprise aura entre 1 et 3 stages associés
 			$nombreStages = $faker->numberBetween(1,3);
 			
 			for ($j = 1 ; $j <= $nombreStages ; $j++)
@@ -56,24 +60,31 @@ class AppFixtures extends Fixture
 				$stage->setTitre($faker->jobTitle());
 				$stage->setDescMissions($faker->realText(255,2));
 				$stage->setEmailContact($faker->email());
-				$stage->setEntreprise($entreprise);
+				$stage->setEntreprise($entreprise);	// Le stage créé sera associé à l'entreprise qu'on est en train de créer
 				
+				// Chaque stage aura entre 1 et 3 formations associées
 				$nombreFormations = $faker->numberBetween(1,3);
 				
 				for ($k = 1 ; $k <= $nombreFormations ; $k++)
 				{
-					$indiceFormation = $faker->unique()->numberBetween(0,3);	// On prend un indice unique parmi ceux 
-																				// du tableau de formations (avec 4 entrées)
+					// On prend un indice unique parmi ceux du tableau de formations (avec 4 entrées)
+					// afin de ne pas avoir un stage associé plusieurs fois à la même formation
+					$indiceFormation = $faker->unique()->numberBetween(0,3);	
 					$stage->addFormation($tableauFormations[$indiceFormation]);
 				}
 				
+				// On réinitialise la fonction unique pour le prochain stage
 				$faker->unique($reset = true);
 				
+				// On persiste le stage créé
 				$manager->persist($stage);
 			}
-			
+
+			// On persiste l'entreprise créée
 			$manager->persist($entreprise);
 		}
+
+		// On valide tous les changements
 		
         $manager->flush();
     }

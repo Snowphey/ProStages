@@ -13,7 +13,7 @@
 			<ul>
 			{% for entreprise in entreprises %}
 				<li>
-					<a href="{{ path('prostages_listeStages_entreprise', {idEntreprise:entreprise.getId()}) }}">
+					<a href="{{ path('prostages_listeStages_entreprise', {id:entreprise.getId()}) }}">
 						<h3>{{entreprise.getNom()}}</h3>
 					</a>
 				</li>

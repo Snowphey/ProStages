@@ -4,7 +4,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<h1><center>Liste des stages</center></h1> <HR>
+			<h1><center>Liste des stages proposés par {{entreprise.getNom()}}</center></h1> <HR>
 		</div>
 	</div>
 
@@ -34,7 +34,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					{% for stage in stages %}
+					{% for stage in entreprise.getStages() %}
 					<tr>
 							<td>
 								{{stage.getId()}}
