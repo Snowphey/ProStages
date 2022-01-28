@@ -13,8 +13,8 @@
 			<ul>
 			{% for formation in formations %}
 				<li>
-					<a href="{{ path('prostages_listeStages_formation', {id:formation.getId()}) }}">
-						<h3>{{formation.getNomCourt()}} ({{formation.getNomLong()}})</h3>
+					<a href="{{ path('prostages_listeStages_formation_nomCourt', {nomCourtFormation:formation.nomCourt}) }}">
+						<h3>{{formation.nomCourt}} ({{formation.nomLong}})</h3>
 					</a>
 				</li>
 			{% endfor %}

@@ -37,24 +37,24 @@
 					{% for stage in stages %}
 					<tr>
 							<td>
-								{{stage.getId()}}
+								{{stage.id}}
 							</td>
 							<td>
-								<a href="{{ path('prostages_stage', {id:stage.getId()}) }}">
-									{{stage.getTitre()}}
+								<a href="{{ path('prostages_stage', {id:stage.id}) }}">
+									{{stage.titre}}
 								</a>
 							</td>
 							<td>
-								{{stage.getEntreprise().getNom()}}
+								{{stage.entreprise.nom}}
 							</td>
 							<td>
-								{{stage.getEntreprise().getActivite()}}
+								{{stage.entreprise.activite}}
 							</td>
 							<td>
-								{{stage.getEntreprise().getAdresse()}}
+								{{stage.entreprise.adresse}}
 							</td>
 							<td>
-								{{stage.getEntreprise().getURLsite()}}
+								{{stage.entreprise.URLsite}}
 							</td>
 					</tr>
 					{% else %}

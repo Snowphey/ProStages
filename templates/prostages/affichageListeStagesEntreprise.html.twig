@@ -4,7 +4,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<h1><center>Liste des stages proposés par {{entreprise.getNom()}}</center></h1> <HR>
+			<h1><center>Liste des stages proposés par {{nomEntreprise}}</center></h1> <HR>
 		</div>
 	</div>
 
@@ -34,27 +34,27 @@
 					</tr>
 				</thead>
 				<tbody>
-					{% for stage in entreprise.getStages() %}
+					{% for stage in stages %}
 					<tr>
 							<td>
-								{{stage.getId()}}
+								{{stage.id}}
 							</td>
 							<td>
 								<a href="{{ path('prostages_stage', {id:stage.getId()}) }}">
-									{{stage.getTitre()}}
+									{{stage.titre}}
 								</a>
 							</td>
 							<td>
-								{{stage.getEntreprise().getNom()}}
+								{{stage.entreprise.nom}}
 							</td>
 							<td>
-								{{stage.getEntreprise().getActivite()}}
+								{{stage.entreprise.activite}}
 							</td>
 							<td>
-								{{stage.getEntreprise().getAdresse()}}
+								{{stage.entreprise.adresse}}
 							</td>
 							<td>
-								{{stage.getEntreprise().getURLsite()}}
+								{{stage.entreprise.URLsite}}
 							</td>
 					</tr>
 					{% else %}

@@ -5,7 +5,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<h1><center>Stage #{{stage.getId()}}</center></h1> <HR>
+			<h1><center>Stage #{{stage.id}}</center></h1> <HR>
 		</div>
 	</div>
 
@@ -13,20 +13,20 @@
 		<div class="col-md-12">
 			<div class="card bg-default">
 				<h5 class="card-header">
-					{{stage.getTitre()}}
+					{{stage.titre}}
 				</h5>
 				<div class="card-body">
 					<p class="card-text">
 						<strong>Description des missions :</strong> <br/>
-						{{stage.getDescMissions()}}
+						{{stage.descMissions}}
 					</p>
 					<p class="card-text">	
 						<strong>E-mail de contact :</strong> <br/>
-						{{stage.getEmailContact()}}
+						{{stage.emailContact}}
 					</p>
 					<p class="card-text">
 						<strong>Entreprise :</strong> <br/>
-						{{stage.getEntreprise().getNom()}}
+						{{stage.entreprise.nom}}
 					</p>
 				</div>
 				<div class="card-footer">
