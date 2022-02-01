@@ -73,7 +73,7 @@ class StageRepository extends ServiceEntityRepository
         
         // Construction de la requête
         $requete = $gestionnaireEntite->createQuery(
-                "SELECT s, e
+                "SELECT s,e
                 FROM App\Entity\Stage s
                 JOIN s.entreprise e
                 JOIN s.formations f
@@ -82,5 +82,33 @@ class StageRepository extends ServiceEntityRepository
 
         // Exécution de la requête et retour des résultats
         return $requete->execute();
+    }
+
+    /**
+    * @return Stage[] Returns an array of Stage objects
+    */
+    public function findStagesEtEntreprises()
+    {
+        return $this->createQueryBuilder('s')
+                    ->select('s,e')
+                    ->join('s.entreprise', 'e')
+                    ->getQuery()
+                    ->getResult()
+        ;
+    }
+
+    /**
+    * @return Stage Returns a Stage object
+    */
+    public function findStageEtEntreprise($idStage)
+    {
+        return $this->createQueryBuilder('s')
+                    ->select('s,e')
+                    ->join('s.entreprise', 'e')
+                    ->andWhere('s.id = :idStage')
+                    ->setParameter('idStage', $idStage)
+                    ->getQuery()
+                    ->getOneOrNullResult()
+        ;
     }
 }

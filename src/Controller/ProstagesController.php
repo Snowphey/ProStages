@@ -20,7 +20,7 @@ class ProstagesController extends AbstractController
      */
     public function index(StageRepository $repositoryStages): Response
     {	
-		$stages = $repositoryStages->findAll();
+		$stages = $repositoryStages->findStagesEtEntreprises();
 		
         return $this->render('prostages/index.html.twig', ['stages' => $stages]);
     }
@@ -46,10 +46,12 @@ class ProstagesController extends AbstractController
     }
 	
 	/**
-     * @Route("/stage/{id}", name="prostages_stage")
+     * @Route("/stage/{idStage}", name="prostages_stage")
      */
-    public function afficherPageStage(Stage $stageSelectionne): Response
+    public function afficherPageStage(StageRepository $repositoryStages, $idStage): Response
     {	
+        $stageSelectionne = $repositoryStages->findStageEtEntreprise($idStage);
+
         return $this->render('prostages/affichageStage.html.twig', ['stage' => $stageSelectionne]);
     }
 	
