@@ -54,6 +54,7 @@ class StageRepository extends ServiceEntityRepository
     public function findStagesParNomEntreprise($nomEntreprise)
     {
         return $this->createQueryBuilder('s')
+                    ->select('s,e')
                     ->join('s.entreprise', 'e')
                     ->andWhere('e.nom = :nomEntreprise')
                     ->setParameter('nomEntreprise', $nomEntreprise)
@@ -71,14 +72,12 @@ class StageRepository extends ServiceEntityRepository
         $gestionnaireEntite = $this->getEntityManager();
         
         // Construction de la requête
-        $chaine =
-        "SELECT s
-        FROM App\Entity\Stage s
-        JOIN s.formations f
-        WHERE f.nomCourt = '" . $nomCourtFormation . "'";
-
-        $requete = $gestionnaireEntite->createQuery($chaine
-           
+        $requete = $gestionnaireEntite->createQuery(
+                "SELECT s, e
+                FROM App\Entity\Stage s
+                JOIN s.entreprise e
+                JOIN s.formations f
+                WHERE f.nomCourt = '$nomCourtFormation'"
             );
 
         // Exécution de la requête et retour des résultats

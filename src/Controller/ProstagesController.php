@@ -61,7 +61,7 @@ class ProstagesController extends AbstractController
         $stages = $repositoryStages->findStagesParNomCourtFormation($nomCourtFormation);
 
         return $this->render('prostages/affichageListeStagesFormation.html.twig', ['stages' => $stages,
-                                                                                   'nomFormation' => $nomCourtFormation]);
+                                                                                   'nomCourtFormation' => $nomCourtFormation]);
     }
 
     /**
