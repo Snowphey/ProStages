@@ -8,18 +8,41 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-12">
-			<ul>
-			{% for entreprise in entreprises %}
-				<li>
-					<a href="{{ path('prostages_listeStages_entreprise_nom', {nomEntreprise:entreprise.nom}) }}">
-						<h3>{{entreprise.nom}}</h3>
+	<center>
+	{% set debutNouvelleLigne = true %}
+        
+	{% for entreprise in entreprises %}
+		{# Si on est en début de ligne, on crée un nouveau composant row #}
+		{% if debutNouvelleLigne == true %}
+			<div class="row">
+			{% set debutNouvelleLigne = false %}
+		{% endif %}
+		<div class="col-md-4">
+			<div class="card border-primary mb-3" style="max-width: 20rem;">
+				<div class="card-body">
+					<a href="{{ path('prostages_listeStages_entreprise_nom', {nomEntreprise: entreprise.nom}) }}">
+						<h4 class="card-title">{{entreprise.nom}}</h4>
 					</a>
-				</li>
-			{% endfor %}
-			</ul>
+					<p class="card-text">{{entreprise.activite}}</p>
+				</div>
+			</div>
 		</div>
-	</div>
+
+		{# Vérifier s'il faut passer à la ligne suivante (toutes les 3 ressources affichées) #}
+		{% if loop.index % 3 == 0 %}
+		</div>
+		<br/>
+		{% set debutNouvelleLigne = true %}
+		
+		{% endif %}
+
+	{% else %}
+
+	<h1>
+		<center>Aucune entreprise disponible.</center>
+	</h1>
+
+	{% endfor %}
+	</center>
 </div>
 {% endblock %}
