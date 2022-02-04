@@ -100,11 +100,12 @@ class StageRepository extends ServiceEntityRepository
     /**
     * @return Stage Returns a Stage object
     */
-    public function findStageEtEntreprise($idStage)
+    public function findStageEntrepriseEtFormations($idStage)
     {
         return $this->createQueryBuilder('s')
-                    ->select('s,e')
+                    ->select('s,e,f')
                     ->join('s.entreprise', 'e')
+                    ->join('s.formations', 'f')
                     ->andWhere('s.id = :idStage')
                     ->setParameter('idStage', $idStage)
                     ->getQuery()

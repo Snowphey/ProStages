@@ -26,7 +26,18 @@
 					</p>
 					<p class="card-text">
 						<strong>Entreprise :</strong> <br/>
-						{{stage.entreprise.nom}}
+						<a href="{{ path('prostages_listeStages_entreprise_nom', {nomEntreprise:stage.entreprise.nom}) }}">
+							{{stage.entreprise.nom}}
+						</a>
+					</p>
+					<p class="card-text">
+						<strong>Formations :</strong> <br/>
+						{% for formation in stage.formations %}
+							<a href="{{ path('prostages_listeStages_formation_nomCourt', {nomCourtFormation:formation.nomCourt}) }}">
+								{{formation.nomCourt}}
+							</a>
+							<br/>
+						{% endfor %}
 					</p>
 				</div>
 				<div class="card-footer">
