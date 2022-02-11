@@ -1,14 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block contenu %}
-
+{% block titrePage %}
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
 			<h1><center>Stage #{{stage.id}}</center></h1> <HR>
 		</div>
 	</div>
+</div>
+{% endblock %}
 
+{% block contenu %}
+
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card bg-default">

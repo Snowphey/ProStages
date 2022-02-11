@@ -1,16 +1,25 @@
 {% extends 'base.html.twig' %}
 
+{% block titrePage %}
+<div class="container-fluid">
+	<div class="row">
+        <div class="col-md-12">
+            <h1><center>
+            {% if action == "ajouter" %} 
+            Formulaire d'ajout d'une entreprise
+            {% else %} 
+            Formulaire de modification d'une entreprise
+            {% endif %}
+            </center></h1> <HR>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
 {% block contenu %}
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <h1><center>Formulaire d'ajout d'une entreprise</center></h1> <HR>
-            </div>
-        </div>
-
 	    <div class="row">
-            <div class="col-md-12">
-                <div class="d-flex justify-content-center">
+            <div class="col-md-6 offset-md-3">
                     {{ form_start(vueFormulaireEntreprise) }}
 
                     <div> <!-- Affichage du champ de saisie du nom de l'entreprise -->
@@ -42,7 +51,6 @@
                     <button type="submit" class="btn btn-dark">Enregistrer</button>
 
                     {{ form_end(vueFormulaireEntreprise) }}
-                </div>
             </div>
 	    </div>
     </div>

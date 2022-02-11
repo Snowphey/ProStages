@@ -112,7 +112,41 @@ class ProstagesController extends AbstractController
         }
 
         // Afficher la page d'ajout d'une entreprise
-        return $this->render('prostages/formulaireAjoutEntreprise.html.twig', 
-        ['vueFormulaireEntreprise' => $formulaireEntreprise->createView ()]);
+        return $this->render('prostages/formulaireAjoutModifEntreprise.html.twig', 
+        ['vueFormulaireEntreprise' => $formulaireEntreprise->createView (),
+         'action' => 'ajouter']);
+    }
+
+    /**
+     * @Route("/modificationEntreprise/{id}", name="prostages_formulaireModificationEntreprise")
+     */
+    public function modifierEntreprise(Request $requeteHTTP, EntityManagerInterface $manager, Entreprise $entreprise): Response
+    {	
+        // Création d'un objet formulaire pour modifier une entreprise
+        $formulaireEntreprise = $this->createFormBuilder($entreprise)
+                                    ->add('nom')
+                                    ->add('activite', TextareaType::class)
+                                    ->add('adresse')
+                                    ->add('URLsite', UrlType::class)
+                                    ->getForm();
+
+        // Récupération des données dans $entreprise si elles ont été soumises
+        $formulaireEntreprise->handleRequest($requeteHTTP);
+
+        // Traiter les données du formulaire s'il a été soumis
+        if($formulaireEntreprise->isSubmitted())
+        {
+            // Enregistrer l'entreprise en BD
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            // Rediriger l'utilisateur vers la page d'accueil affichant la liste des stages
+            return $this->redirectToRoute('prostages_accueil');
+        }
+
+        // Afficher la page d'ajout d'une entreprise
+        return $this->render('prostages/formulaireAjoutModifEntreprise.html.twig', 
+        ['vueFormulaireEntreprise' => $formulaireEntreprise->createView (),
+         'action' => 'modifier']);
     }
 }
