@@ -20,29 +20,25 @@
     <div class="container-fluid">
 	    <div class="row">
             <div class="col-md-6 offset-md-3">
-                    {{ form_start(vueFormulaireEntreprise) }}
+                    {{ form_start(vueFormulaireEntreprise, {'attr': {'novalidate': 'novalidate'}}) }}
 
                     <div> <!-- Affichage du champ de saisie du nom de l'entreprise -->
                     {{form_label(vueFormulaireEntreprise.nom)}} <br/>
-                    {{form_errors(vueFormulaireEntreprise.nom)}}
                     {{form_widget(vueFormulaireEntreprise.nom)}}
                     </div>
 
                     <div> <!-- Affichage du champ de saisie de l'activité de l'entreprise -->
                     {{form_label(vueFormulaireEntreprise.activite)}} <br/>
-                    {{form_errors(vueFormulaireEntreprise.activite)}}
                     {{form_widget(vueFormulaireEntreprise.activite)}}
                     </div>
 
                     <div> <!-- Affichage du champ de saisie de l'adresse de l'entreprise -->
                     {{form_label(vueFormulaireEntreprise.adresse)}} <br/>
-                    {{form_errors(vueFormulaireEntreprise.adresse)}}
                     {{form_widget(vueFormulaireEntreprise.adresse)}}
                     </div>
 
                     <div> <!-- Affichage du champ de saisie de l'URL du site de l'entreprise -->
                     URL du site <br/>
-                    {{form_errors(vueFormulaireEntreprise.URLsite)}}
                     {{form_widget(vueFormulaireEntreprise.URLsite)}}
                     </div>
 

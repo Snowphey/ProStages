@@ -100,8 +100,8 @@ class ProstagesController extends AbstractController
         // Récupération des données dans $entreprise si elles ont été soumises
         $formulaireEntreprise->handleRequest($requeteHTTP);
 
-        // Traiter les données du formulaire s'il a été soumis
-        if($formulaireEntreprise->isSubmitted())
+        // Traiter les données du formulaire s'il a été soumis et est valide
+        if($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid())
         {
             // Enregistrer l'entreprise en BD
             $manager->persist($entreprise);
@@ -133,8 +133,8 @@ class ProstagesController extends AbstractController
         // Récupération des données dans $entreprise si elles ont été soumises
         $formulaireEntreprise->handleRequest($requeteHTTP);
 
-        // Traiter les données du formulaire s'il a été soumis
-        if($formulaireEntreprise->isSubmitted())
+        // Traiter les données du formulaire s'il a été soumis et est valide
+        if($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid())
         {
             // Enregistrer l'entreprise en BD
             $manager->persist($entreprise);

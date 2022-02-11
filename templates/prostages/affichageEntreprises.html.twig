@@ -28,6 +28,9 @@
 						<h4 class="card-title">{{entreprise.nom}}</h4>
 					</a>
 					<p class="card-text">{{entreprise.activite}}</p>
+					<a href="{{ path('prostages_formulaireModificationEntreprise', {id: entreprise.id}) }}">
+						<h6 class="card-text">Modifier</h4>
+					</a>
 				</div>
 			</div>
 		</div>
