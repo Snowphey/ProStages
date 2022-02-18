@@ -20,26 +20,22 @@
     <div class="container-fluid">
 	    <div class="row">
             <div class="col-md-6 offset-md-3">
-                    {{ form_start(vueFormulaireEntreprise, {'attr': {'novalidate': 'novalidate'}}) }}
+                    {{ form_start(vueFormulaireEntreprise) }}
 
                     <div> <!-- Affichage du champ de saisie du nom de l'entreprise -->
-                    {{form_label(vueFormulaireEntreprise.nom)}} <br/>
-                    {{form_widget(vueFormulaireEntreprise.nom)}}
+                        {{form_row(vueFormulaireEntreprise.nom, {'attr': {'placeholder': "Nom de l'entreprise..."}}) }} <br/>
                     </div>
 
                     <div> <!-- Affichage du champ de saisie de l'activité de l'entreprise -->
-                    {{form_label(vueFormulaireEntreprise.activite)}} <br/>
-                    {{form_widget(vueFormulaireEntreprise.activite)}}
+                        {{form_row(vueFormulaireEntreprise.activite, {'attr': {'placeholder': "Activité de l'entreprise..."}}) }} <br/>
                     </div>
 
                     <div> <!-- Affichage du champ de saisie de l'adresse de l'entreprise -->
-                    {{form_label(vueFormulaireEntreprise.adresse)}} <br/>
-                    {{form_widget(vueFormulaireEntreprise.adresse)}}
+                        {{form_row(vueFormulaireEntreprise.adresse, {'attr': {'placeholder': "Adresse de l'entreprise..."}}) }} <br/>
                     </div>
 
                     <div> <!-- Affichage du champ de saisie de l'URL du site de l'entreprise -->
-                    URL du site <br/>
-                    {{form_widget(vueFormulaireEntreprise.URLsite)}}
+                        {{form_row(vueFormulaireEntreprise.URLsite, {'label': "URL du site", 'attr': {'placeholder': "URL du site web de l'entreprise..."}}) }}
                     </div>
 
                     <br/>

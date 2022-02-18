@@ -7,8 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 use App\Entity\Stage;
 use App\Entity\Formation;
@@ -16,6 +14,8 @@ use App\Entity\Entreprise;
 use App\Repository\StageRepository;
 use App\Repository\FormationRepository;
 use App\Repository\EntrepriseRepository;
+use App\Form\EntrepriseType;
+use App\Form\StageType;
 
 class ProstagesController extends AbstractController
 {
@@ -90,12 +90,7 @@ class ProstagesController extends AbstractController
         $entreprise = new Entreprise();
 
         // Création d'un objet formulaire pour ajouter une entreprise
-        $formulaireEntreprise = $this->createFormBuilder($entreprise)
-                                    ->add('nom')
-                                    ->add('activite', TextareaType::class)
-                                    ->add('adresse')
-                                    ->add('URLsite', UrlType::class)
-                                    ->getForm();
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
 
         // Récupération des données dans $entreprise si elles ont été soumises
         $formulaireEntreprise->handleRequest($requeteHTTP);
@@ -123,12 +118,7 @@ class ProstagesController extends AbstractController
     public function modifierEntreprise(Request $requeteHTTP, EntityManagerInterface $manager, Entreprise $entreprise): Response
     {	
         // Création d'un objet formulaire pour modifier une entreprise
-        $formulaireEntreprise = $this->createFormBuilder($entreprise)
-                                    ->add('nom')
-                                    ->add('activite', TextareaType::class)
-                                    ->add('adresse')
-                                    ->add('URLsite', UrlType::class)
-                                    ->getForm();
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
 
         // Récupération des données dans $entreprise si elles ont été soumises
         $formulaireEntreprise->handleRequest($requeteHTTP);
@@ -148,5 +138,35 @@ class ProstagesController extends AbstractController
         return $this->render('prostages/formulaireAjoutModifEntreprise.html.twig', 
         ['vueFormulaireEntreprise' => $formulaireEntreprise->createView (),
          'action' => 'modifier']);
+    }
+
+    /**
+     * @Route("/ajoutStage", name="prostages_formulaireAjoutStage")
+     */
+    public function ajouterStage(Request $requeteHTTP, EntityManagerInterface $manager): Response
+    {	
+        // Création d'un stage initialement vierge
+        $stage = new Stage();
+
+        // Création d'un objet formulaire pour ajouter un stage
+        $formulaireStage = $this->createForm(StageType::class, $stage);
+
+        // Récupération des données dans $stage si elles ont été soumises
+        $formulaireStage->handleRequest($requeteHTTP);
+
+        // Traiter les données du formulaire s'il a été soumis et est valide
+        if($formulaireStage->isSubmitted() && $formulaireStage->isValid())
+        {
+            // Enregistrer le stage en BD
+            $manager->persist($stage);
+            $manager->flush();
+
+            // Rediriger l'utilisateur vers la page d'accueil affichant la liste des stages
+            return $this->redirectToRoute('prostages_accueil');
+        }
+
+        // Afficher la page d'ajout d'un stage
+        return $this->render('prostages/formulaireAjoutStage.html.twig', 
+        ['vueFormulaireStage' => $formulaireStage->createView()]);
     }
 }

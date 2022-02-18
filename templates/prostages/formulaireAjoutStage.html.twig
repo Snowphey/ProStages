@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block titrePage %}
+<div class="container-fluid">
+	<div class="row">
+        <div class="col-md-12">
+            <h1><center>
+            Formulaire d'ajout d'un stage
+            </center></h1> <HR>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block contenu %}
+    <div class="container-fluid">
+	    <div class="row">
+            <div class="col-md-6 offset-md-3">
+                    {{ form_start(vueFormulaireStage, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                    <div> <!-- Affichage du champ de saisie du titre du stage -->
+                        {{form_row(vueFormulaireStage.titre, {'attr': {'placeholder': "Titre du stage..."}}) }} <br/>
+                    </div>
+
+                    <div> <!-- Affichage du champ de saisie de la description des missions du stage -->
+                        {{form_row(vueFormulaireStage.descMissions, {'label': "Description des missions", 'attr': {'placeholder': "Description des missions du stage..."}}) }} <br/>
+                    </div>
+
+                    <div> <!-- Affichage du champ de saisie de l'email de contact associé au stage -->
+                        {{form_row(vueFormulaireStage.emailContact, {'label': "Email de contact", 'attr': {'placeholder': "Email de contact associé au stage..."}}) }} <br/>
+                    </div>
+
+                    <HR>
+
+                    Entreprise
+
+                    <br/>
+
+                    <div> <!-- Affichage du champ de saisie de l'entreprise du stage -->
+                        <div> <!-- Affichage du champ de saisie du nom de l'entreprise -->
+                            {{form_row(vueFormulaireStage.entreprise.nom, {'attr': {'placeholder': "Nom de l'entreprise..."}}) }} <br/>
+                        </div>
+
+                        <div> <!-- Affichage du champ de saisie de l'activité de l'entreprise -->
+                            {{form_row(vueFormulaireStage.entreprise.activite, {'attr': {'placeholder': "Activité de l'entreprise..."}}) }} <br/>
+                        </div>
+
+                        <div> <!-- Affichage du champ de saisie de l'adresse de l'entreprise -->
+                            {{form_row(vueFormulaireStage.entreprise.adresse, {'attr': {'placeholder': "Adresse de l'entreprise..."}}) }} <br/>
+                        </div>
+
+                        <div> <!-- Affichage du champ de saisie de l'URL du site de l'entreprise -->
+                            {{form_row(vueFormulaireStage.entreprise.URLsite, {'label': "URL du site", 'attr': {'placeholder': "URL du site web de l'entreprise..."}}) }}
+                        </div>
+                    </div>
+
+                    <HR>
+
+                    <div> <!-- Affichage du champ de la ou les formations du stage -->
+                        {{form_row(vueFormulaireStage.formations)}}
+                    </div>
+
+                    <br/>
+
+                    <button type="submit" class="btn btn-dark">Enregistrer</button>
+
+                    {{ form_end(vueFormulaireStage) }}
+            </div>
+	    </div>
+    </div>
+{% endblock %}
+
