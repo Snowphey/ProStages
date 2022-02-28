@@ -7,6 +7,7 @@ use Doctrine\Persistence\ObjectManager;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
+use App\Entity\User;
 
 class AppFixtures extends Fixture
 {
@@ -83,6 +84,21 @@ class AppFixtures extends Fixture
 			// On persiste l'entreprise créée
 			$manager->persist($entreprise);
 		}
+
+		// On crée deux utilisateurs
+		$utilisateur = new User();
+		$utilisateur->setUsername("sophie");
+		$utilisateur->setPassword('$2y$10$idlALZIIMvgL4FgaRokbQuH4aeph/J4J78p7MFlMvOAv8G4hpAnK.');
+		$utilisateur->setRoles(['ROLE_ADMIN']);
+
+		$manager->persist($utilisateur);
+
+		$utilisateur = new User();
+		$utilisateur->setUsername("maya");
+		$utilisateur->setPassword('$2y$10$q.FLJSdECqBZPGrVSmNd.e3cL67h6VjAQyh9UJKNYd8nAONY3uuNe');
+		$utilisateur->setRoles(['ROLE_USER']);
+
+		$manager->persist($utilisateur);
 
 		// On valide tous les changements
 		
