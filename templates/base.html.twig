@@ -34,16 +34,34 @@
 		{%block menu %}
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-12">
-				</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-6">
 						<div class="d-grid gap-2 d-md-block">
 							<a href="{{path('prostages_formations')}}">Trier par formation</a>
 							<a href="{{path('prostages_entreprises')}}">Trier par entreprise</a>
 							<a href="{{path('prostages_formulaireAjoutEntreprise')}}">Ajouter une entreprise</a>
 							<a href="{{path('prostages_formulaireAjoutStage')}}">Ajouter un stage</a>
+							{% if is_granted('ROLE_ADMIN') %}
+								<a href="{{path('formation_index')}}">Gérer les formations</a>
+							{% endif %}
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="d-flex justify-content-end">
+							{% if is_granted('ROLE_USER') %}
+								{{ app.user.prenom }} {{ app.user.nom }}
+								&nbsp;
+								<a href="{{ path('app_logout') }}">
+									Déconnexion
+								</a>
+							{% else %}
+								<a href="{{ path('app_inscription') }}">
+									Inscription
+								</a>
+								&nbsp;
+								<a href="{{ path('app_login') }}">
+									Connexion
+								</a>
+							{% endif %}
 						</div>
 					</div>
 				</div>
@@ -52,8 +70,14 @@
 		
 		
 		<!-- BLOCK DU TITRE DE LA PAGE -->
-        {% block titrePage %}
-		{% endblock %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1><center>{% block titrePage %}{% endblock %}</center></h1> 
+                    <HR>
+                </div>
+            </div>
+        </div>
 
 		<!-- BLOCK DU CONTENU -->
         {% block contenu %}

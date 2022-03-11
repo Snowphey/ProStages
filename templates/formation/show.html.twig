@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block titrePage %}
+    Formation
+{% endblock %}
+
+{% block contenu %}
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ formation.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom long</th>
+                <td>{{ formation.nomLong }}</td>
+            </tr>
+            <tr>
+                <th>Nom court</th>
+                <td>{{ formation.nomCourt }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('formation_index') }}">Retour à la liste des formations</a>
+
+    <a href="{{ path('formation_edit', {'id': formation.id}) }}">Modifier</a>
+
+    {{ include('formation/_delete_form.html.twig') }}
+{% endblock %}

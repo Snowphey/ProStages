@@ -87,15 +87,19 @@ class AppFixtures extends Fixture
 
 		// On crée deux utilisateurs
 		$utilisateur = new User();
-		$utilisateur->setUsername("sophie");
-		$utilisateur->setPassword('$2y$10$idlALZIIMvgL4FgaRokbQuH4aeph/J4J78p7MFlMvOAv8G4hpAnK.');
+		$utilisateur->setPrenom("Sophie");
+		$utilisateur->setNom("Longy");
+		$utilisateur->setUsername("slongy");
+		$utilisateur->setPassword('$2y$10$Wuw8tKPHXqdVXNeR2mXg4u3ULMau/yXOyD5ejUtCuQdrtgjD4TOiC');
 		$utilisateur->setRoles(['ROLE_ADMIN']);
 
 		$manager->persist($utilisateur);
 
 		$utilisateur = new User();
-		$utilisateur->setUsername("maya");
-		$utilisateur->setPassword('$2y$10$q.FLJSdECqBZPGrVSmNd.e3cL67h6VjAQyh9UJKNYd8nAONY3uuNe');
+		$utilisateur->setPrenom("Maya");
+		$utilisateur->setNom("Fey");
+		$utilisateur->setUsername("mfey");
+		$utilisateur->setPassword('$2y$10$5gincQF7b.waHMrT8Sv6OO6KXCGrYOqD/H09JZDDAKTjyXIHRfTU2');
 		$utilisateur->setRoles(['ROLE_USER']);
 
 		$manager->persist($utilisateur);

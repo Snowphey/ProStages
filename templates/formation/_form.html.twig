@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+                {{ form_start(vueFormulaireFormation) }}
+
+                <div> <!-- Affichage du champ de saisie du nom long de la formation -->
+                    {{form_row(vueFormulaireFormation.nomLong, {'label': "Nom long", 'attr': {'placeholder': "Nom long de la formation..."}}) }} <br/>
+                </div>
+
+                <div> <!-- Affichage du champ de saisie du nom court de la formation -->
+                    {{form_row(vueFormulaireFormation.nomCourt, {'label': "Nom court", 'attr': {'placeholder': "Nom long de la formation..."}}) }} <br/>
+                </div>
+
+                <button type="submit" class="btn btn-dark">Enregistrer</button>
+
+                {{ form_end(vueFormulaireFormation) }}
+        </div>
+    </div>
+</div>

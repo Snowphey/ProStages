@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block titrePage %}
+    Nouvelle formation
+{% endblock %}
+
+{% block contenu %}
+    {{ include('formation/_form.html.twig') }}
+
+    <a href="{{ path('formation_index') }}">Retour à la liste des formations</a>
+{% endblock %}

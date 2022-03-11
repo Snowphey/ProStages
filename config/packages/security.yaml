@@ -25,7 +25,7 @@ security:
             cost: 10
 
     access_control:
-        - { path: ^/ajoutEntreprise, roles: ROLE_ADMIN }
+        - { path: ^/(ajoutEntreprise|admin), roles: ROLE_ADMIN }
         - { path: ^/ajoutStage, roles: ROLE_USER }
 
     role_hierarchy:
