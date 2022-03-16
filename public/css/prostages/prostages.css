@@ -1,0 +1,23 @@
+.lienBouton {
+    color: white;
+    text-decoration: none;
+}
+
+.lienBouton:hover {
+    color: lightgray;
+}
+
+.lienRouge {
+    color: #471619;
+    text-decoration: none;
+}
+
+.lienRouge:hover {
+    color: #FF1619;
+}
+
+.bg-rougeClair {
+    --bs-bg-opacity: 1;
+    background-color: #FF5954;
+    border-color: #FF5954;
+}

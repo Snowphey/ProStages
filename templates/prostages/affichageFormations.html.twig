@@ -16,13 +16,14 @@
 			{% set debutNouvelleLigne = false %}
 		{% endif %}
 		<div class="col-md-4">
-			<div class="card border-primary mb-3" style="max-width: 20rem;">
-				<div class="card-body">
-					<a href="{{ path('prostages_listeStages_formation_nomCourt', {nomCourtFormation:formation.nomCourt}) }}">
+			<div class="card text-white bg-rougeClair mb-3" style="max-width: 18rem;">
+				<a class="lienBouton" href="{{ path('prostages_listeStages_formation_nomCourt', {nomCourtFormation:formation.nomCourt}) }}">
+					<div class="card-body">
 						<h4 class="card-title">{{formation.nomCourt}}</h4>
-					</a>
-					<p class="card-text">{{formation.nomLong}}</p>
-				</div>
+						
+						<p class="card-text">{{formation.nomLong}}</p>
+					</div>
+				</a>
 			</div>
 		</div>
 

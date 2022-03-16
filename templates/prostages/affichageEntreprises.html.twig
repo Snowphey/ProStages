@@ -16,16 +16,22 @@
 			{% set debutNouvelleLigne = false %}
 		{% endif %}
 		<div class="col-md-4">
-			<div class="card border-primary mb-3" style="max-width: 20rem;">
-				<div class="card-body">
-					<a href="{{ path('prostages_listeStages_entreprise_nom', {nomEntreprise: entreprise.nom}) }}">
+			<div class="card text-white bg-rougeClair mb-3" style="max-width: 18rem;">
+				<a class="lienBouton" href="{{ path('prostages_listeStages_entreprise_nom', {nomEntreprise: entreprise.nom}) }}">
+					<div class="card-body">
 						<h4 class="card-title">{{entreprise.nom}}</h4>
-					</a>
-					<p class="card-text">{{entreprise.activite}}</p>
-					<a href="{{ path('prostages_formulaireModificationEntreprise', {id: entreprise.id}) }}">
-						<h6 class="card-text">Modifier</h4>
-					</a>
-				</div>
+						
+						<p class="card-text">{{entreprise.activite}}</p>
+
+						<HR/>
+
+						<h6 class="card-text">
+							<a class="lienRouge" href="{{ path('prostages_formulaireModificationEntreprise', {id: entreprise.id}) }}">
+								Modifier
+							</a>
+						</h6>
+					</div>
+				</a>
 			</div>
 		</div>
 

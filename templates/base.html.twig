@@ -9,7 +9,8 @@
 		
 		<!-- BLOCK DES FEUILLES DE STYLE -->
         {% block stylesheets %}
-			<link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+			<link rel="stylesheet" href="{{ asset('/css/bootstrap/bootstrap.min.css') }}">
+			<link rel="stylesheet" href="{{ asset('/css/prostages/prostages.css') }}">
 		{% endblock %}     
 
 		
@@ -21,9 +22,29 @@
 		<!-- BLOCK DU TITRE -->
 		{% block titre %}
 			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
+				<div class="row d-flex align-items-center">
+					<div class="col-md-6">
 						<a href="{{ path('prostages_accueil') }}"><img src="{{ asset('/img/logo_prostages.png') }}"></a>
+					</div>
+					<div class="col-md-6">
+						<div class="d-flex align-items-center justify-content-end">
+							{% if is_granted('ROLE_USER') %}
+								<div>
+									{{ app.user.prenom }} {{ app.user.nom }}
+								</div>
+								<a class="btn btn-danger bg-rougeClair" href="{{ path('app_logout') }}">
+									Déconnexion
+								</a>
+							{% else %}
+								<a class="btn btn-danger bg-rougeClair" href="{{ path('app_inscription') }}">
+									Inscription
+								</a>
+								&nbsp;
+								<a class="btn btn-danger bg-rougeClair" href="{{ path('app_login') }}">
+									Connexion
+								</a>
+							{% endif %}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -34,34 +55,17 @@
 		{%block menu %}
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="d-grid gap-2 d-md-block">
-							<a href="{{path('prostages_formations')}}">Trier par formation</a>
-							<a href="{{path('prostages_entreprises')}}">Trier par entreprise</a>
-							<a href="{{path('prostages_formulaireAjoutEntreprise')}}">Ajouter une entreprise</a>
-							<a href="{{path('prostages_formulaireAjoutStage')}}">Ajouter un stage</a>
-							{% if is_granted('ROLE_ADMIN') %}
-								<a href="{{path('formation_index')}}">Gérer les formations</a>
-							{% endif %}
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="d-flex justify-content-end">
-							{% if is_granted('ROLE_USER') %}
-								{{ app.user.prenom }} {{ app.user.nom }}
-								&nbsp;
-								<a href="{{ path('app_logout') }}">
-									Déconnexion
-								</a>
-							{% else %}
-								<a href="{{ path('app_inscription') }}">
-									Inscription
-								</a>
-								&nbsp;
-								<a href="{{ path('app_login') }}">
-									Connexion
-								</a>
-							{% endif %}
+							<div class="btn-group d-flex" role="group">
+								<a class="btn btn-danger bg-rougeClair w-100" href="{{path('prostages_formations')}}">Trier par formation</a>
+								<a class="btn btn-danger bg-rougeClair w-100" href="{{path('prostages_entreprises')}}">Trier par entreprise</a>
+								<a class="btn btn-danger bg-rougeClair w-100" href="{{path('prostages_formulaireAjoutEntreprise')}}">Ajouter une entreprise</a>
+								<a class="btn btn-danger bg-rougeClair w-100" href="{{path('prostages_formulaireAjoutStage')}}">Ajouter un stage</a>
+								{% if is_granted('ROLE_ADMIN') %}
+									<a class="btn btn-danger bg-rougeClair w-100" href="{{path('formation_index')}}">Gérer les formations</a>
+								{% endif %}
+							</div>
 						</div>
 					</div>
 				</div>
