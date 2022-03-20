@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '5190156d27beefd315ccb6062c6ab3baa043b4c0',
+        'reference' => '2ee7329ccde5649ef53e45a6ac9ee2eb9fcbc48f',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '5190156d27beefd315ccb6062c6ab3baa043b4c0',
+            'reference' => '2ee7329ccde5649ef53e45a6ac9ee2eb9fcbc48f',
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(
@@ -190,6 +190,15 @@
             'reference' => '20c39c2de286a9d3262cc8ed282a4ae60e265894',
             'dev_requirement' => false,
         ),
+        'easycorp/easyadmin-bundle' => array(
+            'pretty_version' => 'v2.3.15',
+            'version' => '2.3.15.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../easycorp/easyadmin-bundle',
+            'aliases' => array(),
+            'reference' => '5f2653e98104fcb9d7c1c00df8812786aac9f5db',
+            'dev_requirement' => false,
+        ),
         'egulias/email-validator' => array(
             'pretty_version' => '3.1.2',
             'version' => '3.1.2.0',
@@ -266,6 +275,69 @@
             'dev_requirement' => false,
             'replaced' => array(
                 0 => '^2.1',
+            ),
+        ),
+        'pagerfanta/core' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v2.7.3',
+            ),
+        ),
+        'pagerfanta/doctrine-collections-adapter' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v2.7.3',
+            ),
+        ),
+        'pagerfanta/doctrine-dbal-adapter' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v2.7.3',
+            ),
+        ),
+        'pagerfanta/doctrine-mongodb-odm-adapter' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v2.7.3',
+            ),
+        ),
+        'pagerfanta/doctrine-orm-adapter' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v2.7.3',
+            ),
+        ),
+        'pagerfanta/doctrine-phpcr-odm-adapter' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v2.7.3',
+            ),
+        ),
+        'pagerfanta/elastica-adapter' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v2.7.3',
+            ),
+        ),
+        'pagerfanta/pagerfanta' => array(
+            'pretty_version' => 'v2.7.3',
+            'version' => '2.7.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../pagerfanta/pagerfanta',
+            'aliases' => array(),
+            'reference' => '5f2aa1f1c9d1a6520f459e84b63e2bc25e9eea5b',
+            'dev_requirement' => false,
+        ),
+        'pagerfanta/solarium-adapter' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v2.7.3',
+            ),
+        ),
+        'pagerfanta/twig' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v2.7.3',
             ),
         ),
         'paragonie/random_compat' => array(

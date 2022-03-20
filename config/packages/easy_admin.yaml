@@ -1,0 +1,20 @@
+easy_admin:
+    design:
+        brand_color: '#FF5954'
+    site_name: '<img src="/img/logo_prostages.png">'
+    entities:
+        # change the following to the namespaces of your own entities
+        Stage:
+            class: App\Entity\Stage
+            list:
+                fields: ['id', 'titre', { property: 'descMissions', label: 'Description des missions' }, { property: 'emailContact', label: 'Email de contact' }, 'entreprise', 'formations']
+        Formation:
+            class: App\Entity\Formation
+        Entreprise:
+            class: App\Entity\Entreprise
+            list:
+                fields: ['id', 'nom', { property: 'activite', label: 'Activité' }, 'adresse', { property: 'URLsite', label: 'URL du site web' }, 'stages']
+        User:
+            class: App\Entity\User
+            list:
+                fields: ['id', { property: 'username', label: "Nom d'utilisateur" }, 'nom', { property: 'prenom', label: 'Prénom' }, { property: 'roles', label: 'Rôles' }]
